@@ -25,7 +25,7 @@
       </b-col>
       <b-col lg="3" sm="6" xs="12">
         <div class="pb-xlg h-100">
-          <Widget class="h-100 mb-0" title="Revenue Breakdown" close>
+          <Widget class="h-100 mb-0" title="Overrall Applications" close>
             <highcharts :options="donut"></highcharts>
           </Widget>
         </div>
@@ -101,20 +101,12 @@
       </b-col>
     </b-row>
     <b-row>
-      <b-col xs="12" lg="6" xl="4" v-for="stat in mock.bigStat" :key="stat.id">
-        <BigStat
-          :product="stat.product"
-          :color="stat.color"
-          :total="stat.total"
-          :registrations="stat.registrations"
-          :bounce="stat.bounce"
-        />
-      </b-col>
+     
     </b-row>
     <b-row>
         <b-col xs="12">
           <Widget
-            title="<h5>Support <span class='fw-semi-bold'>Requests</span></h5>"
+            title="<h5>List of <span class='fw-semi-bold'>candidates</span></h5>"
             bodyClass="widget-table-overflow"
             customHeader
           >
@@ -164,7 +156,7 @@
 
 <script>
 import Widget from '@/components/Widget/Widget';
-import BigStat from './components/BigStat/BigStat';
+
 import mock from './mock';
 
 import { Chart } from 'highcharts-vue';
@@ -172,7 +164,7 @@ import { Chart } from 'highcharts-vue';
 export default {
   name: 'Dashboard',
   components: {
-    Widget, BigStat, highcharts: Chart
+    Widget, highcharts: Chart
   },
   data() {
     return {
@@ -192,7 +184,7 @@ export default {
     getRevenueData() {
       const data = [];
       const seriesCount = 3;
-      const accessories = ['SMX', 'Direct', 'Networks'];
+      const accessories = ['CV Submitted', 'CV Approved', 'Interview Arranged'];
 
       for (let i = 0; i < seriesCount; i += 1) {
         data.push({

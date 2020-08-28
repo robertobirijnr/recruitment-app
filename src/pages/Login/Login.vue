@@ -2,75 +2,86 @@
   <div class="auth-page">
     <b-container>
       <h5 class="auth-logo">
-        <i class="fa fa-circle text-primary"></i>
-        Sing App
-        <i class="fa fa-circle text-danger"></i>
+        <img src="@/assets/gra.png" alt="GRA LOGO" />
       </h5>
-      <Widget class="widget-auth mx-auto" title="<h3 class='mt-0'>Login to your Web App</h3>" customHeader>
-        <p class="widget-auth-info">
-            Use your email to sign in.
-        </p>
-        <form class="mt" @submit.prevent="login">
-          <b-alert class="alert-sm" variant="danger" :show="!!errorMessage">
-            {{errorMessage}}
-          </b-alert>
+      <Widget
+        class="widget-auth mx-auto"
+        title="<h3 class='mt-0'>Recruitment Web App</h3>"
+        customHeader
+      >
+        <p class="widget-auth-info">Use your email to sign in.</p>
+        <div class="mt">
+          <b-alert class="alert-sm" variant="danger" :show="!!errorMessage">{{ errorMessage }}</b-alert>
           <div class="form-group">
-            <input class="form-control no-border" ref="email" required type="email" name="email" placeholder="Email" />
+            <input
+              class="form-control no-border"
+              required
+              type="email"
+              name="email"
+              placeholder="Email"
+              v-model="email"
+            />
           </div>
           <div class="form-group">
-            <input class="form-control no-border" ref="password" required type="password" name="password" placeholder="Password" />
+            <input
+              class="form-control no-border"
+              required
+              type="password"
+              name="password"
+              placeholder="Password"
+              v-model="password"
+            />
           </div>
-          <b-button type="submit" size="sm" class="auth-btn mb-3" variant="inverse">Login</b-button>
-          <p class="widget-auth-info">or sign in with</p>
-          <div class="social-buttons">
-            <b-button variant="primary" class="social-button mb-2">
-              <i class="social-icon social-google"></i>
-              <p class="social-text">GOOGLE</p>
-            </b-button>
-            <b-button variant="success" class="social-button">
-              <i class="social-icon social-microsoft"></i>
-              <p class="social-text">MICROSOFT</p>
-            </b-button>
-          </div>
-        </form>
-        <p class="widget-auth-info">
-          Don't have an account? Sign up now!
-        </p>
-        <router-link class="d-block text-center" to="login">Create an Account</router-link>
+          <b-button
+            type="submit"
+            size="sm"
+            class="auth-btn mb-3"
+            variant="inverse"
+            @click="Signin()"
+          >Login</b-button>
+        </div>
       </Widget>
     </b-container>
-    <footer class="auth-footer">
-      2019 &copy; Sing App Vue Admin Dashboard Template.
-    </footer>
+    <footer class="auth-footer">2020 &copy; Ghana Revenue Authority.</footer>
   </div>
 </template>
 
 <script>
-import Widget from '@/components/Widget/Widget';
+import Widget from "@/components/Widget/Widget";
+import axios from "axios";
+import config from "@/config";
 
 export default {
-  name: 'LoginPage',
+  name: "LoginPage",
   components: { Widget },
   data() {
     return {
+      email: "",
+      password: "",
       errorMessage: null,
     };
   },
   methods: {
-    login() {
-      const email = this.$refs.email.value;
-      const password = this.$refs.password.value;
-
-      if (email.length !== 0 && password.length !== 0) {
-        window.localStorage.setItem('authenticated', true);
-        this.$router.push('/app/dashboard');
-      }
+    Signin() {
+      axios
+        .post(`${config.apiUrl}/user/login/`, {
+          email: this.email,
+          password: this.password,
+        })
+        .then((response) => {
+          const results = response.data;
+          config.set_token(results.token.token);
+          config.set_auth(JSON.stringify(results));
+          config.set_user(JSON.stringify(results.user));
+          this.$root.auth = results;
+          this.$router.push("/app/dashboard");
+        })
+        .catch(({ response }) => {
+          // eslint-disable-next-line no-console
+          console.log(response);
+          this.errorMessage = "Invalid credentials";
+        });
     },
-  },
-  created() {
-    if (window.localStorage.getItem('authenticated') === 'true') {
-      this.$router.push('/app/main/analytics');
-    }
   },
 };
 </script>

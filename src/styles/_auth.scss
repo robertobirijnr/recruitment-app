@@ -1,6 +1,7 @@
 .auth-page {
   padding-top: 10vh;
   height: 100vh;
+  background: #002B49;
 }
 
 .widget-auth {
@@ -78,7 +79,7 @@
 .auth-footer {
   margin-bottom: 25px;
   font-size: 13px;
-  color: #636c72;
+  color: #fff;
   text-align: center;
 
   @media (min-height: 600px) {

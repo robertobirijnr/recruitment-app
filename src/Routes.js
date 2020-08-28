@@ -1,82 +1,90 @@
-import Vue from 'vue';
-import Router from 'vue-router';
+import Vue from "vue";
+import Router from "vue-router";
 
-import Layout from '@/components/Layout/Layout';
-import Login from '@/pages/Login/Login';
-import ErrorPage from '@/pages/Error/Error';
+import Layout from "@/components/Layout/Layout";
+import Login from "@/pages/Login/Login";
+import ErrorPage from "@/pages/Error/Error";
 // Core
-import TypographyPage from '@/pages/Typography/Typography';
+import TypographyPage from "@/pages/forms/addNewApplication";
 
 // Tables
-import TablesBasicPage from '@/pages/Tables/Basic';
-
-// Maps
-import GoogleMapPage from '@/pages/Maps/Google';
+import RecruitmentList from "@/pages/Tables/RecruitmentList";
 
 // Main
-import AnalyticsPage from '@/pages/Dashboard/Dashboard';
+import AnalyticsPage from "@/pages/Dashboard/Dashboard";
 
-// Charts
-import ChartsPage from '@/pages/Charts/Charts';
+import LettersList from "@/pages/Tables/lettersList";
 
-// Ui
-import IconsPage from '@/pages/Icons/Icons';
-import NotificationsPage from '@/pages/Notifications/Notifications';
+import letterDetail from "@/pages/Tables/letterDetail";
 
 
 Vue.use(Router);
 
 export default new Router({
-  routes: [
-    {
-      path: '/login',
-      name: 'Login',
+  mode: "history",
+  routes: [{
+      path: "/",
+      name: "Login",
       component: Login,
     },
     {
-      path: '/error',
-      name: 'Error',
+      path: "/error",
+      name: "Error",
       component: ErrorPage,
     },
     {
-      path: '/app',
-      name: 'Layout',
+      path: "/app",
+      name: "Layout",
       component: Layout,
-      children: [
-        {
-          path: 'dashboard',
-          name: 'AnalyticsPage',
+      children: [{
+          path: "dashboard",
+          name: "AnalyticsPage",
           component: AnalyticsPage,
         },
         {
-          path: 'typography',
-          name: 'TypographyPage',
+          path: "letter",
+          name: "lettersList",
+          component: LettersList,
+        },
+        {
+          path: "new-applicant",
+          name: "TypographyPage",
           component: TypographyPage,
         },
         {
-          path: 'components/icons',
-          name: 'IconsPage',
-          component: IconsPage,
+          path: "recruits",
+          name: "RecruitmentList",
+          component: RecruitmentList,
         },
         {
-          path: 'notifications',
-          name: 'NotificationsPage',
-          component: NotificationsPage,
+          path: "/view-detail/:slug",
+          name: "letterDetail",
+          component: letterDetail
         },
         {
-          path: 'components/charts',
-          name: 'ChartsPage',
-          component: ChartsPage,
+          path: "addnew-user",
+          name: "addNewUser",
+          component: () => import("@/pages/forms/addNewUser"),
         },
         {
-          path: 'tables',
-          name: 'TablesBasicPage',
-          component: TablesBasicPage,
+          path: "addnew-letter",
+          name: "newLetter",
+          component: () => import("@/pages/forms/newLetter"),
         },
         {
-          path: 'components/maps',
-          name: 'GoogleMapPage',
-          component: GoogleMapPage,
+          path: "users",
+          name: "users",
+          component: () => import("@/pages/Tables/users"),
+        },
+        {
+          path: ":slug",
+          name: "Detail",
+          component: () => import("@/pages/Tables/Detail"),
+        },
+        {
+          path: ":slug",
+          name: "userDetails",
+          component: () => import("@/pages/Tables/userDetails"),
         },
       ],
     },
