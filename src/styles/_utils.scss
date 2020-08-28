@@ -73,18 +73,77 @@ $z-index-variants: (more: 1, less: -1, '10': 10, '-10': -10);
   border: #{$line-height-base/5}em solid transparent;
 
   // stylelint-disable
-  &.circle-o-danger { border-color: theme-color('danger') };
-  &.circle-o-warning { border-color: theme-color('warning') };
-  &.circle-o-success { border-color: theme-color('success') };
-  &.circle-o-info { border-color: theme-color('info') };
-  &.circle-o-primary { border-color: theme-color('primary') };
-  &.circle-o-black { border-color: $black };
-  &.circle-o-gray-darker { border-color: $gray-900 };
-  &.circle-o-gray-dark { border-color: $gray-800 };
-  &.circle-o-gray { border-color: $gray-700 };
-  &.circle-o-gray-light { border-color: $gray-600 };
-  &.circle-o-gray-lighter { border-color: $gray-200 };
-  &.circle-o-white { border-color: $white };
+  &.circle-o-danger {
+    border-color: theme-color('danger')
+  }
+
+  ;
+
+  &.circle-o-warning {
+    border-color: theme-color('warning')
+  }
+
+  ;
+
+  &.circle-o-success {
+    border-color: theme-color('success')
+  }
+
+  ;
+
+  &.circle-o-info {
+    border-color: theme-color('info')
+  }
+
+  ;
+
+  &.circle-o-primary {
+    border-color: theme-color('primary')
+  }
+
+  ;
+
+  &.circle-o-black {
+    border-color: $black
+  }
+
+  ;
+
+  &.circle-o-gray-darker {
+    border-color: $gray-900
+  }
+
+  ;
+
+  &.circle-o-gray-dark {
+    border-color: $gray-800
+  }
+
+  ;
+
+  &.circle-o-gray {
+    border-color: $gray-700
+  }
+
+  ;
+
+  &.circle-o-gray-light {
+    border-color: $gray-600
+  }
+
+  ;
+
+  &.circle-o-gray-lighter {
+    border-color: $gray-200
+  }
+
+  ;
+
+  &.circle-o-white {
+    border-color: $white
+  }
+
+  ;
   // stylelint-enable
 }
 
@@ -130,6 +189,7 @@ $z-index-variants: (more: 1, less: -1, '10': 10, '-10': -10);
 }
 
 .input-group-dark {
+
   .input-group-addon,
   .form-control {
     background-color: rgba(0, 0, 0, 0.4);
@@ -140,13 +200,13 @@ $z-index-variants: (more: 1, less: -1, '10': 10, '-10': -10);
   }
 
   .form-control:focus,
-  .form-control:focus + .input-group-addon,
+  .form-control:focus+.input-group-addon,
   &.focus .input-group-addon {
     background-color: $gray-200;
   }
 }
 
-@include bg-variant('.bg-dark', $text-color);
+// @include bg-variant('.bg-dark', $text-color);
 
 .td-underline {
   text-decoration: underline;
@@ -197,21 +257,21 @@ $z-index-variants: (more: 1, less: -1, '10': 10, '-10': -10);
 
 //copy bg classes after bootstrap so it's possible to overload other bootstrap classes
 
-@include bg-variant('.bg-primary', theme-color('primary'));
-@include bg-variant('.bg-success', theme-color('success'));
-@include bg-variant('.bg-info', theme-color('info'));
-@include bg-variant('.bg-warning', theme-color('warning'));
-@include bg-variant('.bg-danger', theme-color('danger'));
-@include bg-variant('.bg-body', $body-bg);
-@include bg-variant('.bg-body-light', $body-bg-light);
-@include bg-variant('.bg-gray', $gray-700);
-@include bg-variant('.bg-gray-transparent', rgba($gray-700, 0.6));
-@include bg-variant('.bg-gray-dark', $gray-800);
-@include bg-variant('.bg-black', $black);
-@include bg-variant('.bg-gray-light', $gray-600);
-@include bg-variant('.bg-gray-lighter', $gray-200);
-@include bg-variant('.bg-transparent', rgba(0,0,0,0));
-@include bg-variant('.bg-white', $white);
+// @include bg-variant('.bg-primary', theme-color('primary'));
+// @include bg-variant('.bg-success', theme-color('success'));
+// @include bg-variant('.bg-info', theme-color('info'));
+// @include bg-variant('.bg-warning', theme-color('warning'));
+// @include bg-variant('.bg-danger', theme-color('danger'));
+// @include bg-variant('.bg-body', $body-bg);
+// @include bg-variant('.bg-body-light', $body-bg-light);
+// @include bg-variant('.bg-gray', $gray-700);
+// @include bg-variant('.bg-gray-transparent', rgba($gray-700, 0.6));
+// @include bg-variant('.bg-gray-dark', $gray-800);
+// @include bg-variant('.bg-black', $black);
+// @include bg-variant('.bg-gray-light', $gray-600);
+// @include bg-variant('.bg-gray-lighter', $gray-200);
+// @include bg-variant('.bg-transparent', rgba(0,0,0,0));
+// @include bg-variant('.bg-white', $white);
 
 .bg-body,
 .bg-body-light,
@@ -228,20 +288,20 @@ $z-index-variants: (more: 1, less: -1, '10': 10, '-10': -10);
 
 //override bs .text-* classes so they use $brand-* variables
 
-@include text-emphasis-variant('.text-primary', theme-color('primary'));
-@include text-emphasis-variant('.text-success', theme-color('success'));
-@include text-emphasis-variant('.text-info', theme-color('info'));
-@include text-emphasis-variant('.text-warning', theme-color('warning'));
-@include text-emphasis-variant('.text-danger', theme-color('danger'));
-@include text-emphasis-variant('.text-link', $link-color);
-@include text-emphasis-variant('.text-white', $white);
-@include text-emphasis-variant('.text-gray', $gray-700);
-@include text-emphasis-variant('.text-gray-dark', $gray-800);
-@include text-emphasis-variant('.text-gray-light', $gray-600);
-@include text-emphasis-variant('.text-semi-muted', $gray-600);
-@include text-emphasis-variant('.text-gray-darker', $gray-900);
-@include text-emphasis-variant('.text-gray-lighter', $gray-200);
-@include text-emphasis-variant('.text-color', $text-color);
+// @include text-emphasis-variant('.text-primary', theme-color('primary'));
+// @include text-emphasis-variant('.text-success', theme-color('success'));
+// @include text-emphasis-variant('.text-info', theme-color('info'));
+// @include text-emphasis-variant('.text-warning', theme-color('warning'));
+// @include text-emphasis-variant('.text-danger', theme-color('danger'));
+// @include text-emphasis-variant('.text-link', $link-color);
+// @include text-emphasis-variant('.text-white', $white);
+// @include text-emphasis-variant('.text-gray', $gray-700);
+// @include text-emphasis-variant('.text-gray-dark', $gray-800);
+// @include text-emphasis-variant('.text-gray-light', $gray-600);
+// @include text-emphasis-variant('.text-semi-muted', $gray-600);
+// @include text-emphasis-variant('.text-gray-darker', $gray-900);
+// @include text-emphasis-variant('.text-gray-lighter', $gray-200);
+// @include text-emphasis-variant('.text-color', $text-color);
 
 .text-ellipsis {
   display: block;
@@ -373,6 +433,7 @@ $z-index-variants: (more: 1, less: -1, '10': 10, '-10': -10);
 }
 
 .input-group-dark {
+
   .input-group-addon,
   .form-control {
     background-color: rgba(0, 0, 0, 0.4);
@@ -383,20 +444,21 @@ $z-index-variants: (more: 1, less: -1, '10': 10, '-10': -10);
   }
 
   .form-control:focus,
-  .form-control:focus + .input-group-addon,
+  .form-control:focus+.input-group-addon,
   &.focus .input-group-addon {
     background-color: $gray-200;
   }
 }
 
 .input-group-transparent {
+
   .form-control:first-child,
   .input-group-addon:first-child,
-  .input-group-btn:first-child > .btn,
-  .input-group-btn:first-child > .btn-group > .btn,
-  .input-group-btn:first-child > .dropdown-toggle,
-  .input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle),
-  .input-group-btn:last-child > .btn-group:not(:last-child) > .btn {
+  .input-group-btn:first-child>.btn,
+  .input-group-btn:first-child>.btn-group>.btn,
+  .input-group-btn:first-child>.dropdown-toggle,
+  .input-group-btn:last-child>.btn:not(:last-child):not(.dropdown-toggle),
+  .input-group-btn:last-child>.btn-group:not(:last-child)>.btn {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     border-right: none;
@@ -404,11 +466,11 @@ $z-index-variants: (more: 1, less: -1, '10': 10, '-10': -10);
 
   .form-control:last-child,
   .input-group-addon:last-child,
-  .input-group-btn:last-child > .btn,
-  .input-group-btn:last-child > .btn-group > .btn,
-  .input-group-btn:last-child > .dropdown-toggle,
-  .input-group-btn:first-child > .btn:not(:first-child),
-  .input-group-btn:first-child > .btn-group:not(:first-child) > .btn {
+  .input-group-btn:last-child>.btn,
+  .input-group-btn:last-child>.btn-group>.btn,
+  .input-group-btn:last-child>.dropdown-toggle,
+  .input-group-btn:first-child>.btn:not(:first-child),
+  .input-group-btn:first-child>.btn-group:not(:first-child)>.btn {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     border-left: none;
@@ -421,7 +483,7 @@ $z-index-variants: (more: 1, less: -1, '10': 10, '-10': -10);
     @include transition(border-color ease-in-out 0.15s);
   }
 
-  .form-control:focus + .input-group-addon,
+  .form-control:focus+.input-group-addon,
   &.focus .input-group-addon {
     border-color: $input-focus-border-color;
   }
@@ -446,31 +508,32 @@ $z-index-variants: (more: 1, less: -1, '10': 10, '-10': -10);
   }
 
   .form-control:focus,
-  .form-control:focus + .input-group-addon,
+  .form-control:focus+.input-group-addon,
   &.focus .input-group-addon {
     @extend .input-no-border:focus;
   }
 }
 
 .input-group-rounded {
+
   .form-control:first-child,
   .input-group-addon:first-child,
-  .input-group-btn:first-child > .btn,
-  .input-group-btn:first-child > .btn-group > .btn,
-  .input-group-btn:first-child > .dropdown-toggle,
-  .input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle),
-  .input-group-btn:last-child > .btn-group:not(:last-child) > .btn {
+  .input-group-btn:first-child>.btn,
+  .input-group-btn:first-child>.btn-group>.btn,
+  .input-group-btn:first-child>.dropdown-toggle,
+  .input-group-btn:last-child>.btn:not(:last-child):not(.dropdown-toggle),
+  .input-group-btn:last-child>.btn-group:not(:last-child)>.btn {
     border-top-left-radius: $border-radius;
     border-bottom-left-radius: $border-radius;
   }
 
   .form-control:last-child,
   .input-group-addon:last-child,
-  .input-group-btn:last-child > .btn,
-  .input-group-btn:last-child > .btn-group > .btn,
-  .input-group-btn:last-child > .dropdown-toggle,
-  .input-group-btn:first-child > .btn:not(:first-child),
-  .input-group-btn:first-child > .btn-group:not(:first-child) > .btn {
+  .input-group-btn:last-child>.btn,
+  .input-group-btn:last-child>.btn-group>.btn,
+  .input-group-btn:last-child>.dropdown-toggle,
+  .input-group-btn:first-child>.btn:not(:first-child),
+  .input-group-btn:first-child>.btn-group:not(:first-child)>.btn {
     border-top-right-radius: $border-radius;
     border-bottom-right-radius: $border-radius;
   }
@@ -509,19 +572,48 @@ $padding-horizontal-variants: (lg: 20px, md: 15px, sm: 10px, xs: 5px, 0: 0);
   @include media-breakpoint-down($breakpoint) {
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
-    .d#{$infix}-down-none { display: none !important; }
-    .d#{$infix}-down-inline { display: inline !important; }
-    .d#{$infix}-down-inline-block { display: inline-block !important; }
-    .d#{$infix}-down-block { display: block !important; }
-    .d#{$infix}-down-table { display: table !important; }
-    .d#{$infix}-down-table-cell { display: table-cell !important; }
-    .d#{$infix}-down-flex { display: flex !important; }
-    .d#{$infix}-down-inline-flex { display: inline-flex !important; }
+    .d#{$infix}-down-none {
+      display: none !important;
+    }
+
+    .d#{$infix}-down-inline {
+      display: inline !important;
+    }
+
+    .d#{$infix}-down-inline-block {
+      display: inline-block !important;
+    }
+
+    .d#{$infix}-down-block {
+      display: block !important;
+    }
+
+    .d#{$infix}-down-table {
+      display: table !important;
+    }
+
+    .d#{$infix}-down-table-cell {
+      display: table-cell !important;
+    }
+
+    .d#{$infix}-down-flex {
+      display: flex !important;
+    }
+
+    .d#{$infix}-down-inline-flex {
+      display: inline-flex !important;
+    }
   }
 }
 
 /* .h* + .fw-bold */
-$font-sizes: 54px, $h1-font-size, $h2-font-size, $h3-font-size, $h4-font-size, $h5-font-size, $h6-font-size;
+$font-sizes: 54px,
+$h1-font-size,
+$h2-font-size,
+$h3-font-size,
+$h4-font-size,
+$h5-font-size,
+$h6-font-size;
 $i: 0;
 
 @each $font-size in $font-sizes {
@@ -530,7 +622,8 @@ $i: 0;
     font-size: $font-size;
     font-weight: $font-weight-semi-bold;
   }
-  $i: $i + 1 !global;
+
+  $i: $i+1 !global;
 }
 
 .chart-overflow-bottom {
@@ -549,6 +642,7 @@ $i: 0;
   animation-delay: .1s;
   opacity: 0;
 }
+
 .router-animation-leave-active {
   animation: going .2s;
 }
@@ -557,16 +651,19 @@ $i: 0;
   from {
     transform: translate3d(0, 0, 0) scale(1);
   }
+
   to {
     transform: translate3d(0, 4%, 0) scale(.93);
     opacity: 0;
   }
 }
+
 @keyframes coming {
   from {
     transform: translate3d(0, 4%, 0) scale(.93);
     opacity: 0;
   }
+
   to {
     transform: translate3d(0, 0, 0) scale(1);
     opacity: 1;
