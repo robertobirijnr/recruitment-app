@@ -2,7 +2,7 @@
   <section class="notifications navbar-notifications">
     <header class="cardHeader card-header">
       <div class="text-center mb-sm">
-        <strong>You have 13 notifications</strong>
+        <strong>You have 5 notifications</strong>
       </div>
       <b-button-group id="notification-b-buttons">
         <b-button variant="default" @click="changeNotificationsTab(1)">Notifications</b-button>
@@ -14,7 +14,7 @@
     <NotifictionsList v-else-if="notificationsTabSelected === 1" />
     <Messages v-else-if="notificationsTabSelected === 2" />
     <Progress v-else-if="notificationsTabSelected === 3" />
-    <NotifictionsList v-else/>
+    <NotifictionsList v-else />
     <footer class="cardFooter text-sm card-footer">
       <span class="fs-mini">Synced at: 21 Apr 2014 18:36</span>
       <b-button
@@ -22,7 +22,9 @@
         @click="loadNotifications"
         :class="{disabled: isLoad, 'btnNotificationsReload btn-xs float-right py-0': true}"
       >
-        <span v-if="isLoad"><i class="la la-refresh la-spin" /> Loading...</span>
+        <span v-if="isLoad">
+          <i class="la la-refresh la-spin" /> Loading...
+        </span>
         <i v-else class="la la-refresh" />
       </b-button>
     </footer>
@@ -30,18 +32,11 @@
 </template>
 
 <script>
-import Vue from 'vue';
-
-import NotifictionsList from './NotificationsDemo/NotificationsList';
-import NewNotifictionsList from './NotificationsDemo/NewNotificationsList';
-import Messages from './NotificationsDemo/Messages';
-import Progress from './NotificationsDemo/Progress';
+import Vue from "vue";
 
 export default {
-  name: 'Notification',
-  components: {
-    NotifictionsList, NewNotifictionsList, Messages, Progress,
-  },
+  name: "Notification",
+
   data() {
     return {
       notificationsTabSelected: 1,
@@ -51,15 +46,15 @@ export default {
   },
   methods: {
     changeNotificationsTab(tab) {
-      Vue.set(this, 'notificationsTabSelected', tab);
-      Vue.set(this, 'newNotifications', null);
+      Vue.set(this, "notificationsTabSelected", tab);
+      Vue.set(this, "newNotifications", null);
     },
     loadNotifications() {
-      Vue.set(this, 'isLoad', true);
+      Vue.set(this, "isLoad", true);
 
       setTimeout(() => {
-        Vue.set(this, 'newNotifications', 'new notifications component');
-        Vue.set(this, 'isLoad', false);
+        Vue.set(this, "newNotifications", "new notifications component");
+        Vue.set(this, "isLoad", false);
       }, 1500);
     },
   },

@@ -2,12 +2,7 @@
   <b-navbar class="header d-print-none app-header">
     <b-nav>
       <b-nav-item>
-        <a
-          class="d-md-down-none px-2"
-          href="#"
-          @click="toggleSidebarMethod"
-          id="barsTooltip"
-        >
+        <a class="d-md-down-none px-2" href="#" @click="toggleSidebarMethod" id="barsTooltip">
           <i class="la la-bars la-lg" />
         </a>
         <a class="fs-lg d-lg-none" href="#" @click="switchSidebarMethod">
@@ -20,7 +15,9 @@
         <b-form-group>
           <b-input-group class="input-group-no-border">
             <template v-slot:prepend>
-              <b-input-group-text><i class="la la-search"/></b-input-group-text>
+              <b-input-group-text>
+                <i class="la la-search" />
+              </b-input-group-text>
             </template>
             <b-form-input id="search-input" placeholder="Search Dashboard" />
           </b-input-group>
@@ -42,36 +39,25 @@
       >
         <template slot="button-content">
           <span class="avatar rounded-circle thumb-sm float-left mr-2">
-            <img
-              class="rounded-circle"
-              src="../../assets/people/a5.jpg"
-              alt="..."
-            />
+            <img class="rounded-circle" src alt />
           </span>
           <span class="small">Robert Obiri</span>
-          <span class="ml-1 circle bg-primary text-white fw-bold">13</span>
+          <span class="ml-1 circle bg-primary text-white fw-bold">6</span>
         </template>
         <Notifications />
       </b-nav-item-dropdown>
-      <b-nav-item-dropdown
-        id="v-step-2"
-        class="settingsDropdown d-sm-down-none"
-        no-caret
-        right
-      >
+      <b-nav-item-dropdown id="v-step-2" class="settingsDropdown d-sm-down-none" no-caret right>
         <template slot="button-content">
           <i class="la la-cog px-2" />
         </template>
-        <b-dropdown-item><i class="la la-user" /> My Account</b-dropdown-item>
+        <b-dropdown-item>
+          <i class="la la-user" /> My Account
+        </b-dropdown-item>
         <b-dropdown-divider />
         <b-dropdown-item>Calendar</b-dropdown-item>
         <b-dropdown-item>
-          Inbox &nbsp;&nbsp;<b-badge
-            variant="danger"
-            pill
-            class="animated bounceIn"
-            >9</b-badge
-          >
+          Inbox &nbsp;&nbsp;
+          <b-badge variant="danger" pill class="animated bounceIn">9</b-badge>
         </b-dropdown-item>
         <b-dropdown-divider />
         <b-dropdown-item-button @click="logout">
