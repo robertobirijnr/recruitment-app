@@ -11,16 +11,20 @@ import store from './store';
 import router from './Routes';
 import App from './App';
 import layoutMixin from './mixins/layout';
+import vueConfig from "../vue.config";
 // import Widget from './components/Widget/Widget';
 
 Vue.use(BootstrapVue);
 Vue.use(VueTouch);
 Vue.use(Trend);
+Vue.use(vueConfig);
 // Vue.component('Widget', Widget);
 
 Vue.component('apexchart', VueApexCharts);
 Vue.mixin(layoutMixin);
-Vue.use(Toasted, {duration: 10000});
+Vue.use(Toasted, {
+  duration: 10000
+});
 
 Vue.config.productionTip = false;
 
