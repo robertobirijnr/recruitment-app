@@ -1,10 +1,6 @@
 /* eslint-disable no-console */
 <template>
   <div>
-    <h2 class="page-title">
-      Create
-      <span class="fw-semi-bold">User</span>
-    </h2>
     <div class="b-row">
       <div class="b-col-8">
         <Widget>
@@ -81,7 +77,7 @@ import axios from "axios";
 import config from "@/config";
 
 export default {
-  name: "NewUser",
+  name: "addNewUser",
   components: { Widget },
   data() {
     return {

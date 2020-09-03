@@ -2,7 +2,7 @@
   <div class="sidebar-wrapper">
     <nav :class="{sidebar: true, sidebarStatic, sidebarOpened}">
       <header class="logo">
-        <router-link to="/app">
+        <router-link to="/app/dashboard">
           <span class="primary-word">GRA</span> App
         </router-link>
       </header>
@@ -19,7 +19,7 @@
           :activeItem="activeItem"
           header="New Recruit"
           link="/app/new-applicant"
-          iconName="flaticon-list"
+          iconName="flaticon-add"
           index="typography"
           isHeader
         />
@@ -35,18 +35,18 @@
           :activeItem="activeItem"
           header="List of Letters"
           link="/app/letter"
-          iconName="flaticon-network"
+          iconName="flaticon-list"
           index="lettersList"
           isHeader
         />
-        <NavLink
+        <!-- <NavLink
           :activeItem="activeItem"
           header="Users"
           link="/app/users"
           iconName="flaticon-users"
           index="users"
           isHeader
-        />
+        />-->
       </ul>
     </nav>
   </div>

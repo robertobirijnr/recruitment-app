@@ -68,7 +68,7 @@ import axios from "axios";
 import config from "@/config";
 
 export default {
-  name: "Tables",
+  name: "users",
   components: { Widget, Sparklines },
   data() {
     return {

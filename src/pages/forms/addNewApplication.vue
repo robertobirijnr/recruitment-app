@@ -1,16 +1,12 @@
 <template>
   <div>
-    <h2 class="page-title">
-      Recruit
-      <span class="fw-semi-bold">Form</span>
-    </h2>
     <div class="b-row">
       <div class="col-11">
         <Widget>
           <div class="form">
             <div class="form-group">
               <label for="referred">Referred by</label>
-              <input type="text" class="form-control" v-model="referred" />
+              <input type="text" class="form-control" v-model="referred" placeholder="Referred By" />
             </div>
           </div>
           <div class="form-group">

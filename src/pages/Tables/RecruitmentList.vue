@@ -1,9 +1,5 @@
 <template>
   <div class="tables-basic">
-    <h2 class="page-title">
-      All
-      <span class="fw-semi-bold">APPLICATIONS</span>
-    </h2>
     <b-row>
       <b-col>
         <Widget>

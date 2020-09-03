@@ -1,7 +1,5 @@
 <template>
   <div class="tables-basic">
-    <h2 class="page-title"></h2>
-
     <b-row>
       <b-col lg="8">
         <Widget>

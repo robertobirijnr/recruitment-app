@@ -1,19 +1,10 @@
 <template>
   <div class="tables-basic">
-    <h2 class="page-title">
-      Recruit
-      <span class="fw-semi-bold">Letters</span>
-    </h2>
-
     <b-row>
       <b-col>
         <Widget>
           <span>
-            <router-link
-              to="/app/addnew-letter"
-              class="btn btn-primary float-right"
-              >New letter</router-link
-            >
+            <router-link to="/app/addnew-letter" class="btn btn-primary float-right">New letter</router-link>
           </span>
           <div class="table-resposive">
             <table class="table">
@@ -40,10 +31,7 @@
                   <td>{{ object.date_dispatched }}</td>
 
                   <td>
-                    <router-link
-                      :to="`/view-detail/${object.slug}`"
-                      class="btn btn-primary"
-                    >
+                    <router-link :to="`/view-detail/${object.slug}`" class="btn btn-primary">
                       <i class="fa fa-eye" aria-hidden="true"></i>
                     </router-link>
                   </td>
@@ -54,24 +42,20 @@
                         class="btn btn-warning"
                         @click="$bvModal.show('bv-modal-example')"
                       >
-                        <i class="fa fa-close" aria-hidden="true"></i
-                      ></b-button>
+                        <i class="fa fa-close" aria-hidden="true"></i>
+                      </b-button>
 
                       <b-modal id="bv-modal-example" hide-footer>
-                        <template v-slot:modal-title>
-                          Are you sure you want to do this?
-                        </template>
+                        <template v-slot:modal-title>Are you sure you want to do this?</template>
 
                         <b-button
                           class="mt-3 btn btn-success"
                           @click="$bvModal.hide('bv-modal-example')"
-                          >Cancel</b-button
-                        >
+                        >Cancel</b-button>
                         <b-button
                           class="mt-3 btn btn-danger"
                           @click="handleSubmit(object.slug)"
-                          >Confirm</b-button
-                        >
+                        >Confirm</b-button>
                       </b-modal>
                     </div>
                   </td>
@@ -91,6 +75,7 @@ import axios from "axios";
 import config from "@/config";
 
 export default {
+  name: "lettersList",
   components: {
     Widget,
   },

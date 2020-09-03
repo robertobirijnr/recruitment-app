@@ -91,7 +91,7 @@ import axios from "axios";
 import config from "@/config";
 
 export default {
-  name: "NewApplicants",
+  name: "newLetter",
   components: { Widget },
   data() {
     return {
