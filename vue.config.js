@@ -1,4 +1,4 @@
-let publicPath = process.env.NODE_ENV === 'production' ? 'recruitment-app/' : '/';
+let publicPath = process.env.NODE_ENV === 'production' ? './' : '/';
 
 module.exports = {
   configureWebpack: {
