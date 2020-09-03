@@ -1,9 +1,5 @@
 <template>
   <div>
-    <h2 class="page-title">
-      New Letter
-      <span class="fw-semi-bold">Form</span>
-    </h2>
     <div class="b-row">
       <div class="col-11">
         <Widget>
@@ -92,7 +88,9 @@ import config from "@/config";
 
 export default {
   name: "newLetter",
-  components: { Widget },
+  components: { 
+    Widget 
+    },
   data() {
     return {
       date_received: "",

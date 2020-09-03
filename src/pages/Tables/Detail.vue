@@ -139,7 +139,7 @@ import config from "@/config";
 import moment from "moment";
 
 export default {
-  name: "recruitsDetails",
+  name: "Detail",
   components: { Widget, Sparklines },
   data() {
     return {
