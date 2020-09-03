@@ -6,7 +6,7 @@
       </h5>
       <Widget
         class="widget-auth mx-auto"
-        title="<h3 class='mt-0'>Recruitment Web App</h3>"
+        title="<h3 class='mt-0'>GRA RECRUITMENT SYSTEM</h3>"
         customHeader
       >
         <p class="widget-auth-info">Use your email to sign in.</p>
