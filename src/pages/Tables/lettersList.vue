@@ -4,7 +4,7 @@
       <b-col>
         <Widget>
           <span>
-            <router-link to="/app/addnew-letter" class="btn btn-primary float-right">New letter</router-link>
+            <router-link :to="{name:'newLetter'}" class="btn btn-primary float-right">New letter</router-link>
           </span>
           <div class="table-resposive">
             <table class="table">
