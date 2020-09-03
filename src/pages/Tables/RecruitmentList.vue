@@ -46,7 +46,7 @@ import axios from "axios";
 import config from "@/config";
 
 export default {
-  name: "RecruitsList",
+  name: "RecruitmentList",
   components: {
     Widget,
     Sparklines,
