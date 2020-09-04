@@ -1,7 +1,7 @@
 <template>
   <div class="tables-basic">
     <b-row>
-      <b-col lg="8">
+      <b-col class="grey-text" lg="10">
         <Widget>
           <h3 class="text-center p-3 mb-2 bg-primary text-white">
             <span class="fw-semi-bold">Details</span>

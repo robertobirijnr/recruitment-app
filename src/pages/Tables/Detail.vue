@@ -100,7 +100,7 @@
           <span class="fw-semi-bold">Section</span>
         </h3>
         <!--Display comments here-->
-        <div class="list-group" v-if="results.comments.length > 0">
+        <div class="list-group">
           <a
             href="#"
             class="list-group-item list-group-item-action flex-column align-items-start"
@@ -115,7 +115,7 @@
             <!-- <small class="text-muted">Donec id elit non mi porta.</small> -->
           </a>
         </div>
-        <span v-else>No comments!</span>
+        
         <b-form-textarea
           type="text"
           id="textarea-rows"

@@ -64,6 +64,15 @@
           </div>
           <br />
           <div class="form-group">
+            <label for="letter_type">Letter Type</label>
+            <select name="letter_type" v-model="letter_type" id="letter_type" class="form-control">
+              <option value>select role</option>
+              <option value="CG">C-G's Office</option>
+              <option value="CL">Correspondence Request for Payment</option>
+              <option value="RP">Request for payment</option>
+            </select>
+          </div>
+          <div class="form-group">
             <label for="attach">Attach Letter</label>
             <input
               type="file"
@@ -100,6 +109,7 @@ export default {
       dispatched_to: "",
       date_dispatched: "",
       success: "",
+      letter_type:"",
       attach: "",
     };
   },
@@ -112,6 +122,7 @@ export default {
         formData.append("letter_date", this.letter_date),
         formData.append("subject", this.subject),
         formData.append("dispatched_to", this.dispatched_to),
+        formData.append("letter_typ", this.letter_type),
         formData.append("date_dispatched", this.date_dispatched),
         formData.append("attach", this.attach);
       axios

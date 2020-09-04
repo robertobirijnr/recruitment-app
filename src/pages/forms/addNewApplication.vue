@@ -31,17 +31,7 @@
               required
             />
           </div>
-          <div class="form-group">
-            <label for="received">Received</label>
-            <input
-              type="text"
-              name="received"
-              v-model="received"
-              class="form-control"
-              placeholder="received"
-              required
-            />
-          </div>
+         
           <div class="form-group">
             <label for="position">Position</label>
             <input
@@ -73,7 +63,16 @@
               required
             />
           </div>
-          <br />
+          <br/>
+          <div class="form-group">
+            <label for="gender">Gender</label>
+             <select class="form-control" name="gender" id="gender" v-model="gender">
+                <option value>select gender</option>
+                <option value="male">male</option>
+                <option value="female">female</option>
+             </select>   
+          </div>
+          
           <div class="form-group">
             <label for="cv">Carriculum vitae</label>
             <input
@@ -105,9 +104,10 @@ export default {
       referred: "",
       first_name: "",
       last_name: "",
-      received: "",
+     
       position: "",
       phone_number: "",
+      gender:"",
       email: "",
       success: "",
       cv: "",
@@ -121,8 +121,9 @@ export default {
         formData.append("first_name", this.first_name),
         formData.append("last_name", this.last_name),
         formData.append("position", this.position),
-        formData.append("received", this.received),
+      
         formData.append("phone_number", this.phone_number),
+        formData.append("gender", this.gender),
         formData.append("email", this.email),
         formData.append("cv", this.cv);
       axios
