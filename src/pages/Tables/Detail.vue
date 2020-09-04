@@ -85,6 +85,58 @@
                           required
                         ></b-form-input>
                       </b-form-group>
+                      <b-form-group
+                        :state="nameState"
+                        label="Technical"
+                        label-for="technical-input"
+                        invalid-feedback="Technical is required"
+                      >
+                        <b-form-input
+                          type="number"
+                          v-model="technical"
+                          class="form-control"
+                          required
+                        ></b-form-input>
+                      </b-form-group>
+                       <b-form-group
+                        :state="nameState"
+                        label="Leadership"
+                        label-for="leadership-input"
+                        invalid-feedback="leadership is required"
+                      >
+                        <b-form-input
+                          type="number"
+                          v-model="leadership"
+                          class="form-control"
+                          required
+                        ></b-form-input>
+                      </b-form-group>
+                      <b-form-group
+                        :state="nameState"
+                        label="current_affairs"
+                        label-for="current_affairs-input"
+                        invalid-feedback="current_affairs is required"
+                      >
+                        <b-form-input
+                          type="number"
+                          v-model="current_affairs"
+                          class="form-control"
+                          required
+                        ></b-form-input>
+                        </b-form-group>
+                        <b-form-group
+                        :state="nameState"
+                        label="appearance"
+                        label-for="appearance-input"
+                        invalid-feedback="appearance is required"
+                      >
+                        <b-form-input
+                          type="number"
+                          v-model="appearance"
+                          class="form-control"
+                          required
+                        ></b-form-input>
+                      </b-form-group>
                     </form>
                   </b-modal>
                 </div>
@@ -149,6 +201,10 @@ export default {
       nameState: null,
       submittedNames: [],
       text: "",
+      technical:"",
+      leadership:"",
+      current_affairs:"",
+      appearance:"",
     };
   },
   mounted() {
@@ -199,6 +255,10 @@ export default {
           {
             name: this.interviewer,
             date: this.interview_date,
+            technical:this.technical,
+            leadership:this.leadership,
+            current_affairs:this.current_affairs,
+            appearance:this.appearance
           },
           {
             headers: {
