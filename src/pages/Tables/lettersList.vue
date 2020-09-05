@@ -1,5 +1,5 @@
 <template>
-  <div class="tables-basic">
+  <div v-if="renderComponent" class="tables-basic">
     <b-row>
       <b-col>
         <Widget>
@@ -209,6 +209,7 @@ export default {
       loading: false,
        name: '',
        nameState: null,
+       renderComponent: true,
        date_received: "",
       received_from: "",
       letter_date: "",
@@ -247,8 +248,10 @@ export default {
         })
         .then((response) => {
           this.$toasted.success("action has been completed successfully");
-          this.$bvModal.hide("modal-prevent-closing");
-          this.$router.push("/app/new-applicant");
+          this.renderComponent = false;
+           this.$nextTick(() => {
+          this.renderComponent = true;
+        })
           // eslint-disable-next-line no-console
           console.log(response);
         })
@@ -256,6 +259,9 @@ export default {
           this.$toasted.error(error.response.status);
         });
       // Hide the modal manually
+       this.$nextTick(() => {
+          this.renderComponent = true;
+        })
     },
      checkFormValidity() {
         const valid = this.$refs.form.checkValidity()
@@ -295,20 +301,25 @@ export default {
         })
         .then((response) => {
           this.$toasted.success("File created successfull");
-         
+         this.renderComponent = false;
+         this.$nextTick(() => {
+          this.$bvModal.hide('modal-prevent-closing')
+          this.renderComponent = true;
+        })
           // eslint-disable-next-line no-console
           console.log(response);
         })
         .catch((error) => {
           this.$toasted.error(error.response.status);
         });
-        this.results.push(formData)
+        this.renderComponent = false;
   
         // eslint-disable-next-line no-console
         console.log(this.name)
         
         this.$nextTick(() => {
           this.$bvModal.hide('modal-prevent-closing')
+          this.renderComponent = true;
         })
       }
   },
