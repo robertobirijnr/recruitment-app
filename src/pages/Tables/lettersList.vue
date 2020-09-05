@@ -1,5 +1,6 @@
 <template>
-  <div v-if="renderComponent" class="tables-basic">
+<div v-if="renderComponent">
+  <div  class="tables-basic">
     <b-row>
       <b-col>
         <Widget>
@@ -191,6 +192,7 @@
       </b-col>
     </b-row>
   </div>
+  </div>
 </template>
 
 <script>
@@ -248,6 +250,7 @@ export default {
         })
         .then((response) => {
           this.$toasted.success("action has been completed successfully");
+          this.$forceUpdate();
           this.renderComponent = false;
            this.$nextTick(() => {
           this.renderComponent = true;
