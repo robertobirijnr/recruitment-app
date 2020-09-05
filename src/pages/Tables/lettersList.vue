@@ -3,9 +3,133 @@
     <b-row>
       <b-col>
         <Widget>
-          <span>
+           <div>
+            <b-button class="btn btn-success float-right" v-b-modal.modal-prevent-closing>New letter</b-button>
+
+            <b-modal
+              id="modal-prevent-closing"
+              ref="modal"
+              title="Add New Letter"
+              @show="resetModal"
+              @hidden="resetModal"
+              @ok="handleYes"
+            >
+              <form ref="form" @submit.stop.prevent="addNewLetter">
+                <b-form-group
+                  :state="nameState"
+                  label="Date Received"
+                  
+                  label-for="date-input"
+                  invalid-feedback="Name is required"
+                >
+                  <b-form-input
+                    id="date-input"
+                    v-model="date_received"
+                    :state="nameState"
+                    type="date"
+                    required
+                  ></b-form-input>
+                </b-form-group>
+                 <b-form-group
+                  :state="nameState"
+                  label="Received From"
+                  type="text"
+                  label-for="receied_from-input"
+                  invalid-feedback="received_from is required"
+                >
+                  <b-form-input
+                    id="first_name-input"
+                    v-model="received_from"
+                    :state="nameState"
+                    required
+                  ></b-form-input>
+                </b-form-group>
+                 <b-form-group
+                  :state="nameState"
+                  label="Letter Date"
+                  type="date"
+                  label-for="letter_date-input"
+                  invalid-feedback="letter_date is required"
+                >
+                  <b-form-input
+                    id="letter_date-input"
+                    v-model="letter_date"
+                    :state="nameState"
+                    type="date"
+                    required
+                  ></b-form-input>
+                </b-form-group>
+                 <b-form-group
+                  :state="nameState"
+                  label="Subject"
+                  type="text"
+                  label-for="subject-input"
+                  invalid-feedback="subject is required"
+                >
+                  <b-form-input
+                    id="subject-input"
+                    v-model="subject"
+                    :state="nameState"
+                    required
+                  ></b-form-input>
+                </b-form-group>
+                 <b-form-group
+                  :state="nameState"
+                  label="Dispatched To"
+                  type="text"
+                  label-for="Dispatched To"
+                  invalid-feedback="dispatched_to is required"
+                >
+                  <b-form-input
+                    id="dispatched_to-input"
+                    v-model="dispatched_to"
+                    :state="nameState"
+                    required
+                  ></b-form-input>
+                </b-form-group>
+                 <b-form-group
+                  :state="nameState"
+                  label="Date Dispatched"
+                  type="date"
+                  label-for="Dispatched To"
+                  invalid-feedback="dispatched_to is required"
+                >
+                  <b-form-input
+                    id="date_dispatched-input"
+                    v-model="date_dispatched"
+                    type="date"
+                    :state="nameState"
+                    required
+                  ></b-form-input>
+                </b-form-group>
+                <b-form-group
+                  :state="nameState"
+                  label="Letter Type"
+                  label-for="letter_type"
+                  invalid-feedback="letter_type is required"
+                >
+                <b-form-select v-model="letter_type" :state="nameState" :options="options" size="sm" class="mt-3"></b-form-select>
+                </b-form-group>
+                <b-form-group
+                 :state="nameState"
+                  label="Upload Letter"
+                  label-for="upload file"
+                  invalid-feedback="upload is required"
+                >
+                   <b-form-file
+                    v-model="attach"
+                    :state="Boolean(attach)"
+                     accept=".pdf, .doc"
+                    placeholder="Choose a file or drop it here..."
+                    
+                  ></b-form-file>
+                </b-form-group>
+              </form>
+            </b-modal>
+          </div>
+          <!-- <span>
             <router-link :to="{name:'newLetter'}" class="btn btn-primary float-right">New letter</router-link>
-          </span>
+          </span> -->
           <div class="table-resposive">
             <table class="table">
               <thead>
@@ -83,6 +207,23 @@ export default {
     return {
       results: [],
       loading: false,
+       name: '',
+       nameState: null,
+       date_received: "",
+      received_from: "",
+      letter_date: "",
+      subject: "",
+      dispatched_to: "",
+      date_dispatched: "",
+      success: "",
+      letter_type:"",
+      attach: null,
+      options: [
+          { value: "", text: 'Please select an option' },
+          { value: 'CG', text: "C-G's Office" },
+          { value: 'CL', text: 'Correspondence Request for Payment' },
+          { value: 'RP', text: 'Request for payment' }
+        ]
     };
   },
   created() {
@@ -116,7 +257,62 @@ export default {
         });
       // Hide the modal manually
     },
+     checkFormValidity() {
+        const valid = this.$refs.form.checkValidity()
+        this.nameState = valid
+        return valid
+      },
+      resetModal() {
+        this.name = ''
+        this.nameState = null
+      },
+      handleYes(bvModalEvt) {
+        // Prevent modal from closing
+        bvModalEvt.preventDefault()
+        // Trigger submit handler
+        this.addNewLetter()
+      },
+      addNewLetter() {
+        // Exit when the form isn't valid
+        if (!this.checkFormValidity()) {
+          return
+        }
+        let formData = new FormData();
+      formData.append("date_received", this.date_received),
+        formData.append("received_from", this.received_from),
+        formData.append("letter_date", this.letter_date),
+        formData.append("subject", this.subject),
+        formData.append("dispatched_to", this.dispatched_to),
+        formData.append("letter_typ", this.letter_type),
+        formData.append("date_dispatched", this.date_dispatched),
+        formData.append("attach", this.attach);
+      axios
+        .post(`${config.apiUrl}/recruit/letters/`, formData, {
+          headers: {
+            Authorization: `JWT ${config.get_token()}`,
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then((response) => {
+          this.$toasted.success("File created successfull");
+         
+          // eslint-disable-next-line no-console
+          console.log(response);
+        })
+        .catch((error) => {
+          this.$toasted.error(error.response.status);
+        });
+        this.results.push(formData)
+  
+        // eslint-disable-next-line no-console
+        console.log(this.name)
+        
+        this.$nextTick(() => {
+          this.$bvModal.hide('modal-prevent-closing')
+        })
+      }
   },
+ 
 };
 </script>
 
